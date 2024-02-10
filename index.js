@@ -25,7 +25,7 @@ six.onclick = buttonSix;
 seven.onclick = buttonSeven;
 eight.onclick = buttonEight;
 nine.onclick = buttonNine;
-
+//functions button
 function buttonClear() {
     numberDisplay = "";
     display.innerHTML = "0";
