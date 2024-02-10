@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Web Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="calculator">
-        <header class="calculatorHeader">
-            <div class="calculator_expression">0</div>
-            <div class="calculator_operands"><span>0</span></div>
-        </header>
-        <div class="operations">
-            <div class="calculator_container">
-                <div class="calculator_button">C</div>
-                <div class="calculator_button">+/-</div>
-                <div class="calculator_button">%</div>
-                <div class="calculator_button">√</div>
-                <div class="calculator_button">7</div>
-                <div class="calculator_button">8</div>
-                <div class="calculator_button">9</div>
-                <div class="calculator_button">/</div>
-                <div class="calculator_button">4</div>
-                <div class="calculator_button">5</div>
-                <div class="calculator_button">6</div>
-                <div class="calculator_button">X</div>
-                <div class="calculator_button">1</div>
-                <div class="calculator_button">2</div>
-                <div class="calculator_button">3</div>
-                <div class="calculator_button"> _ </div>
-                <div class="calculator_button">0</div>
-                <div class="calculator_button parenteses">(</div>
-                <div class="calculator_button parenteses">)</div>
-                <div class="calculator_button">.</div>
-                <div class="calculator_button">+</div>
-            </div>
+      <header class="calculatorHeader">
+        <div class="calculator_expression">0</div>
+        <div class="calculator_operands"><span id="display">0</span></div>
+      </header>
+      <div class="operations">
+        <div class="calculator_container">
+          <div class="calculator_button clear">C</div>
+          <div class="calculator_button">+/-</div>
+          <div class="calculator_button">%</div>
+          <div class="calculator_button">√</div>
+          <div class="calculator_button">7</div>
+          <div class="calculator_button">8</div>
+          <div class="calculator_button">9</div>
+          <div class="calculator_button">/</div>
+          <div class="calculator_button">4</div>
+          <div class="calculator_button">5</div>
+          <div class="calculator_button">6</div>
+          <div class="calculator_button">X</div>
+          <div class="calculator_button" id="one" >1</div>
+          <div class="calculator_button">2</div>
+          <div class="calculator_button">3</div>
+          <div class="calculator_button">_</div>
+          <div class="calculator_button" id="zero">0</div>
+          <div class="calculator_button parenteses">(</div>
+          <div class="calculator_button parenteses">)</div>
+          <div class="calculator_button">.</div>
+          <div class="calculator_button">+</div>
         </div>
-        <div class="result">
-            <div class="calculator_equals"></div>
-            <div class="calculator_equals"></div>
-        </div>
+      </div>
+      <div class="result">
+        <div class="calculator_equals"></div>
+        <div class="calculator_equals"></div>
+      </div>
     </div>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
