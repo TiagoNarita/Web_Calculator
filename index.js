@@ -1,5 +1,6 @@
 var numberDisplay = "";
 
+const expression = document.getElementById("expression");
 const display = document.getElementById("display");
 const clear = document.getElementById("clear");
 const zero = document.getElementById("zero");
@@ -12,6 +13,7 @@ const six = document.getElementById("six");
 const seven = document.getElementById("seven");
 const eight = document.getElementById("eight");
 const nine = document.getElementById("nine");
+const equal = document.getElementById("result");
 
 //inicialize buttons
 clear.onclick = buttonClear;
@@ -25,10 +27,16 @@ six.onclick = buttonSix;
 seven.onclick = buttonSeven;
 eight.onclick = buttonEight;
 nine.onclick = buttonNine;
+equal.onclick = result;
 //functions button
+
+function result() {
+    expression.innerHTML = "= " + numberDisplay;
+}
 function buttonClear() {
     numberDisplay = "";
     display.innerHTML = "0";
+    expression.innerHTML = "0";
 }
 
 function buttonZero() {
@@ -65,7 +73,6 @@ function buttonEight() {
 function buttonNine() {
     addNumber(9);
 }
-
 
 function addNumber(number) {
     numberDisplay += number.toString();
