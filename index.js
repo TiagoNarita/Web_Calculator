@@ -1,4 +1,5 @@
 var numberDisplay = "";
+var expressionAccount;
 
 const expression = document.getElementById("expression");
 const display = document.getElementById("display");
@@ -13,7 +14,7 @@ const six = document.getElementById("six");
 const seven = document.getElementById("seven");
 const eight = document.getElementById("eight");
 const nine = document.getElementById("nine");
-const plus = document.getElementById("plus")
+const plus = document.getElementById("plus");
 const equal = document.getElementById("result");
 
 //inicialize buttons
@@ -76,11 +77,17 @@ function buttonNine() {
     addNumber(9);
 }
 
-function plusfunc(){
-    
+function plusfunc() {
+    expression.innerHTML = "+ " + numberDisplay;
+    console.log(numberDisplay);
+    storeNextNumber()
 }
 
 function addNumber(number) {
     numberDisplay += number.toString();
     display.innerHTML = numberDisplay;
+}
+
+function storeNextNumber (){
+    
 }
