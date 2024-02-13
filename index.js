@@ -1,5 +1,6 @@
 var numberDisplay = "";
-var expressionAccount;
+var numberAccount = "";
+var trueOperator = "";
 
 const expression = document.getElementById("expression");
 const display = document.getElementById("display");
@@ -15,6 +16,7 @@ const seven = document.getElementById("seven");
 const eight = document.getElementById("eight");
 const nine = document.getElementById("nine");
 const plus = document.getElementById("plus");
+const less = document.getElementById("less");
 const equal = document.getElementById("result");
 
 //inicialize buttons
@@ -30,9 +32,13 @@ seven.onclick = buttonSeven;
 eight.onclick = buttonEight;
 nine.onclick = buttonNine;
 equal.onclick = result;
-plus.onclick = plusfunc;
+plus.onclick = function () {
+    setOperator("+");
+};
+less.onclick = function () {
+    setOperator("-");
+};
 //functions button
-
 
 function buttonClear() {
     numberDisplay = "";
@@ -75,11 +81,17 @@ function buttonNine() {
     addNumber(9);
 }
 
-function setoperator(operator) {
-    switch (operator){
+function setOperator(operator) {
+    switch (operator) {
         case "+":
-           
+            trueOperator = "+";
+            break;
+        case "-":
+            trueOperator = "-";
+            break;
     }
+
+    expression.innerHTML = `${trueOperator} ${numberDisplay}`;
 }
 
 function addNumber(number) {
