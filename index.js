@@ -13,6 +13,7 @@ const six = document.getElementById("six");
 const seven = document.getElementById("seven");
 const eight = document.getElementById("eight");
 const nine = document.getElementById("nine");
+const plus = document.getElementById("plus")
 const equal = document.getElementById("result");
 
 //inicialize buttons
@@ -28,6 +29,7 @@ seven.onclick = buttonSeven;
 eight.onclick = buttonEight;
 nine.onclick = buttonNine;
 equal.onclick = result;
+plus.onclick = plusfunc;
 //functions button
 
 function result() {
@@ -72,6 +74,10 @@ function buttonEight() {
 }
 function buttonNine() {
     addNumber(9);
+}
+
+function plusfunc(){
+    
 }
 
 function addNumber(number) {
