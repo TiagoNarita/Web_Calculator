@@ -33,9 +33,7 @@ equal.onclick = result;
 plus.onclick = plusfunc;
 //functions button
 
-function result() {
-    expression.innerHTML = "= " + numberDisplay;
-}
+
 function buttonClear() {
     numberDisplay = "";
     display.innerHTML = "0";
@@ -77,10 +75,11 @@ function buttonNine() {
     addNumber(9);
 }
 
-function plusfunc() {
-    expression.innerHTML = "+ " + numberDisplay;
-    console.log(numberDisplay);
-    storeNextNumber()
+function setoperator(operator) {
+    switch (operator){
+        case "+":
+           
+    }
 }
 
 function addNumber(number) {
@@ -88,6 +87,6 @@ function addNumber(number) {
     display.innerHTML = numberDisplay;
 }
 
-function storeNextNumber (){
-    
+function result() {
+    expression.innerHTML = "= " + numberDisplay;
 }
