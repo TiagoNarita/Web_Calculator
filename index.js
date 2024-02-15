@@ -57,6 +57,7 @@ function buttonClear() {
     numberDisplay = "";
     display.innerHTML = "0";
     expression.innerHTML = "0";
+    numberAccount = null;
 }
 
 function buttonZero() {
