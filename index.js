@@ -1,23 +1,30 @@
-var numberDisplay = "";
-var numberAccount = "";
-var trueOperator = "";
+let numberDisplay = "";
+let numberAccount = null;
+let trueOperator = "";
+let operatorActive = false;
 
-const expression = document.getElementById("expression");
-const display = document.getElementById("display");
-const clear = document.getElementById("clear");
-const zero = document.getElementById("zero");
-const one = document.getElementById("one");
-const two = document.getElementById("two");
-const three = document.getElementById("three");
-const four = document.getElementById("four");
-const five = document.getElementById("five");
-const six = document.getElementById("six");
-const seven = document.getElementById("seven");
-const eight = document.getElementById("eight");
-const nine = document.getElementById("nine");
-const plus = document.getElementById("plus");
-const less = document.getElementById("less");
-const equal = document.getElementById("result");
+function getElement(id) {
+    return document.getElementById(id);
+}
+
+const expression = getElement("expression");
+const display = getElement("display");
+const clear = getElement("clear");
+const zero = getElement("zero");
+const one = getElement("one");
+const two = getElement("two");
+const three = getElement("three");
+const four = getElement("four");
+const five = getElement("five");
+const six = getElement("six");
+const seven = getElement("seven");
+const eight = getElement("eight");
+const nine = getElement("nine");
+const plus = getElement("plus");
+const less = getElement("less");
+const mult = getElement("mult");
+const div = getElement("div");
+const equal = getElement("result");
 
 //inicialize buttons
 clear.onclick = buttonClear;
@@ -37,6 +44,12 @@ plus.onclick = function () {
 };
 less.onclick = function () {
     setOperator("-");
+};
+mult.onclick = function () {
+    setOperator("x");
+};
+div.onclick = function () {
+    setOperator("/");
 };
 //functions button
 
@@ -82,23 +95,53 @@ function buttonNine() {
 }
 
 function setOperator(operator) {
-    switch (operator) {
-        case "+":
-            trueOperator = "+";
-            break;
-        case "-":
-            trueOperator = "-";
-            break;
-    }
+    const operators = ["+", "-", "x", "/"];
 
-    expression.innerHTML = `${trueOperator} ${numberDisplay}`;
+    if (operators.includes(operator)) {
+        if (numberAccount === null) {
+            trueOperator = operator;
+            expression.innerHTML = `${numberDisplay} ${trueOperator}`;
+            numberDisplay = "";
+            operatorActive = true;
+        } else {
+            expression.innerHTML = `${numberAccount} ${trueOperator}`;
+            numberDisplay = "";
+            operatorActive = true;
+        }
+    }
 }
 
 function addNumber(number) {
-    numberDisplay += number.toString();
+    numberDisplay += number;
     display.innerHTML = numberDisplay;
 }
 
 function result() {
-    expression.innerHTML = "= " + numberDisplay;
+    if (operatorActive) {
+        const firstOperand = parseFloat(expression.innerHTML);
+        const secondOperand = parseFloat(numberDisplay);
+
+        switch (trueOperator) {
+            case "+":
+                display.innerHTML = firstOperand + secondOperand;
+                break;
+            case "-":
+                display.innerHTML = firstOperand - secondOperand;
+                break;
+            case "x":
+                display.innerHTML = firstOperand * secondOperand;
+                break;
+            case "/":
+                display.innerHTML =
+                    secondOperand !== 0
+                        ? firstOperand / secondOperand
+                        : "Error";
+                break;
+        }
+
+        expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
+        numberAccount = display.innerHTML;
+        operatorActive = false;
+        numberDisplay = "";
+    }
 }

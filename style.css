@@ -44,7 +44,6 @@ body {
   text-align: right;
   overflow: hidden;
   float: right;
-  direction: rtl;
 }
 
 .calculator_operands {
