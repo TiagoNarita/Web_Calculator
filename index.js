@@ -105,6 +105,7 @@ function setOperator(operator) {
             numberDisplay = "";
             operatorActive = true;
         } else {
+            trueOperator = operator;
             expression.innerHTML = `${numberAccount} ${trueOperator}`;
             numberDisplay = "";
             operatorActive = true;
