@@ -99,17 +99,12 @@ function setOperator(operator) {
     const operators = ["+", "-", "x", "/"];
 
     if (operators.includes(operator)) {
-        if (numberAccount === null) {
-            trueOperator = operator;
-            expression.innerHTML = `${?numberAccount ===null numberDisplay} ${trueOperator}`;
-            numberDisplay = "";
-            operatorActive = true;
-        } else {
-            trueOperator = operator;
-            expression.innerHTML = `${numberAccount} ${trueOperator}`;
-            numberDisplay = "";
-            operatorActive = true;
-        }
+        trueOperator = operator;
+        expression.innerHTML = `${
+            numberAccount === null ? numberAccount : numberDisplay
+        } ${trueOperator}`;
+        numberDisplay = "";
+        operatorActive = true;
     }
 }
 
