@@ -101,7 +101,7 @@ function setOperator(operator) {
     if (operators.includes(operator)) {
         if (numberAccount === null) {
             trueOperator = operator;
-            expression.innerHTML = `${numberDisplay} ${trueOperator}`;
+            expression.innerHTML = `${?numberAccount ===null numberDisplay} ${trueOperator}`;
             numberDisplay = "";
             operatorActive = true;
         } else {
