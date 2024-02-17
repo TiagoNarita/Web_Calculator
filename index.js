@@ -129,10 +129,12 @@ function result() {
                 display.innerHTML = firstOperand * secondOperand;
                 break;
             case "/":
-                display.innerHTML =
-                    secondOperand !== 0
-                        ? firstOperand / secondOperand
-                        : "Error";
+                if (secondOperand !== 0) {
+                    display.innerHTML = firstOperand / secondOperand;
+                } else if (secondOperand === 0) {
+                    display.innerHTML = "Cannot divide by zero";
+                    display.style.font
+                }
                 break;
         }
 
