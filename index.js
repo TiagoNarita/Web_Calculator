@@ -133,7 +133,8 @@ function result() {
                     display.innerHTML = firstOperand / secondOperand;
                 } else if (secondOperand === 0) {
                     display.innerHTML = "Cannot divide by zero";
-                    display.style.fontSize = "3"
+                    display.style.fontSize = "25px";
+                    display.style.fontWeight = "500"
                 }
                 break;
         }
