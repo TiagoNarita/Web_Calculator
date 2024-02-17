@@ -64,8 +64,7 @@ function buttonZero() {
     if (display.innerHTML !== "0") {
         numberDisplay += "0";
         display.innerHTML = numberDisplay;
-    }else{
-        
+    } else {
     }
 }
 function buttonOne() {
@@ -102,8 +101,8 @@ function setOperator(operator) {
     display.classList.remove("error_div");
 
     if (operators.includes(operator)) {
-        if(numberDisplay == ""){
-            numberDisplay = 0
+        if (numberDisplay === "") {
+            numberDisplay = 0;
         }
         trueOperator = operator;
         expression.innerHTML = `${
@@ -119,17 +118,19 @@ function addNumber(number) {
     numberDisplay += number;
     display.innerHTML = numberDisplay;
     numberAccount = null;
+    if (!operatorActive) {
+        expression.innerHTML = 0;
+    }
 }
 
 function result() {
-    if (operatorActive) {       
-        const firstOperand = parseFloat(expression.innerHTML);     
-        if(numberDisplay === ""){
-            numberDisplay = 0;
+    if (operatorActive) {
+        const firstOperand = parseFloat(expression.innerHTML);
+        if (numberDisplay === "") {
+            numberDisplay =  display.innerHTML;
         }
-        
-        const secondOperand = parseFloat(numberDisplay);   
-        
+        const secondOperand = parseFloat(numberDisplay);
+
         switch (trueOperator) {
             case "+":
                 display.innerHTML = firstOperand + secondOperand;
@@ -146,12 +147,10 @@ function result() {
                 } else if (secondOperand === 0 && firstOperand === 0) {
                     display.innerHTML = "Result is undefined";
                     display.classList.add("error_div");
-                    
-                }else if (secondOperand === 0) {
+                } else if (secondOperand === 0) {
                     display.innerHTML = "Cannot divide by zero";
                     display.classList.add("error_div");
-                    
-                } 
+                }
                 break;
         }
 
