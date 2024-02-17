@@ -61,9 +61,11 @@ function buttonClear() {
 }
 
 function buttonZero() {
-    if (display.innerHTML != 0) {
+    if (display.innerHTML !== "0") {
         numberDisplay += "0";
         display.innerHTML = numberDisplay;
+    }else{
+        
     }
 }
 function buttonOne() {
@@ -97,8 +99,12 @@ function buttonNine() {
 
 function setOperator(operator) {
     const operators = ["+", "-", "x", "/"];
+    display.classList.remove("error_div");
 
     if (operators.includes(operator)) {
+        if(numberDisplay == ""){
+            numberDisplay = 0
+        }
         trueOperator = operator;
         expression.innerHTML = `${
             numberAccount !== null ? numberAccount : numberDisplay
@@ -109,15 +115,21 @@ function setOperator(operator) {
 }
 
 function addNumber(number) {
+    display.classList.remove("error_div");
     numberDisplay += number;
     display.innerHTML = numberDisplay;
+    numberAccount = null;
 }
 
 function result() {
-    if (operatorActive) {
-        const firstOperand = parseFloat(expression.innerHTML);
-        const secondOperand = parseFloat(numberDisplay);
-
+    if (operatorActive) {       
+        const firstOperand = parseFloat(expression.innerHTML);     
+        if(numberDisplay === ""){
+            numberDisplay = 0;
+        }
+        
+        const secondOperand = parseFloat(numberDisplay);   
+        
         switch (trueOperator) {
             case "+":
                 display.innerHTML = firstOperand + secondOperand;
@@ -131,11 +143,15 @@ function result() {
             case "/":
                 if (secondOperand !== 0) {
                     display.innerHTML = firstOperand / secondOperand;
-                } else if (secondOperand === 0) {
+                } else if (secondOperand === 0 && firstOperand === 0) {
+                    display.innerHTML = "Result is undefined";
+                    display.classList.add("error_div");
+                    
+                }else if (secondOperand === 0) {
                     display.innerHTML = "Cannot divide by zero";
-                    display.style.fontSize = "25px";
-                    display.style.fontWeight = "500"
-                }
+                    display.classList.add("error_div");
+                    
+                } 
                 break;
         }
 

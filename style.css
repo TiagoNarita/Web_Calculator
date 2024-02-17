@@ -131,3 +131,8 @@ body {
 .parenteses {
   flex: 12%;
 }
+
+.error_div{
+  font-size: 25px;
+   font-Weight:500
+}
