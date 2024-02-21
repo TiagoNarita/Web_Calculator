@@ -55,30 +55,33 @@ div.onclick = function () {
 };
 //functions button
 
-
-
 function buttonClear() {
     numberDisplay = "0";
     display.innerHTML = 0;
     expression.innerHTML = 0;
     numberAccount = null;
 }
-
+//arrumar quando ele vem na expressao
 function minusfunc() {
-    if (display.innerHTML.includes("-")) {
-        display.innerHTML = display.innerHTML.slice("1");
-    } else {
-        display.innerHTML = "-" + display.innerHTML;
-        numberDisplay = display.innerHTML
+    if (display.innerHTML !== "0") {
+        if (display.innerHTML.includes("-")) {
+            display.innerHTML = display.innerHTML.slice("1");
+        } else {
+            display.innerHTML = "-" + display.innerHTML;
+            numberDisplay = display.innerHTML;
+        }
     }
 }
 
 function buttonZero() {
-    if (display.innerHTML !== "0") {
+    if (numberDisplay !== "0") {
         numberDisplay += "0";
         display.innerHTML = numberDisplay;
     } else {
         display.innerHTML = "0";
+        if (!operatorActive) {
+            expression.innerHTML = 0;
+        }
     }
 }
 function buttonOne() {
@@ -110,7 +113,6 @@ function buttonNine() {
     addNumber(9);
 }
 
-//sinal inverso nao chega no mais e menos
 function setOperator(operator) {
     trueOperator = operator;
     console.log(numberDisplay);
@@ -136,7 +138,7 @@ function addNumber(number) {
 function result() {
     if (operatorActive) {
         const firstOperand = parseFloat(expression.innerHTML);
-        if (numberDisplay === 0) {
+        if (numberDisplay === "0") {
             numberDisplay = display.innerHTML;
         }
         const secondOperand = parseFloat(numberDisplay);
