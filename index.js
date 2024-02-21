@@ -40,7 +40,7 @@ seven.onclick = buttonSeven;
 eight.onclick = buttonEight;
 nine.onclick = buttonNine;
 equal.onclick = result;
-minus.onclick = minus()
+minus.onclick = minusfunc;
 plus.onclick = function () {
     setOperator("+");
 };
@@ -62,8 +62,9 @@ function buttonClear() {
     numberAccount = null;
 }
 
-function minus (){
-    
+function minusfunc (){
+    numberDisplay += "+";
+    display.innerHTML = numberDisplay;
 }
 
 function buttonZero() {
