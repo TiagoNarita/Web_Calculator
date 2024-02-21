@@ -1,4 +1,4 @@
-let numberDisplay = "";
+let numberDisplay = "0";
 let numberAccount = null;
 let trueOperator = "";
 let operatorActive = false;
@@ -56,22 +56,29 @@ div.onclick = function () {
 //functions button
 
 function buttonClear() {
-    numberDisplay = "";
-    display.innerHTML = "0";
-    expression.innerHTML = "0";
+    numberDisplay = "0";
+    display.innerHTML = 0;
+    expression.innerHTML = 0;
     numberAccount = null;
 }
 
-function minusfunc (){
-    numberDisplay += "+";
-    display.innerHTML = numberDisplay;
+function minusfunc() {
+    if (numberDisplay.includes("-")) {
+        numberDisplay = numberDisplay.slice("1");
+        display.innerHTML = numberDisplay;
+    } else {
+        numberDisplay = "-" + numberDisplay;
+        display.innerHTML = numberDisplay;
+    }
 }
 
+//lembrar de arrumar o zero
 function buttonZero() {
     if (display.innerHTML !== "0") {
         numberDisplay += "0";
         display.innerHTML = numberDisplay;
     } else {
+        numberDisplay = 0;
     }
 }
 function buttonOne() {
@@ -103,21 +110,22 @@ function buttonNine() {
     addNumber(9);
 }
 
+//sinal inverso nao chega no mais e menos
 function setOperator(operator) {
-        if (numberDisplay === "") {
-            numberDisplay = 0;
-        }
-        trueOperator = operator;
-        expression.innerHTML = `${
-            numberAccount !== null ? numberAccount : numberDisplay
-        } ${trueOperator}`;
-        numberDisplay = "";
-        operatorActive = true; 
+    trueOperator = operator;
+    console.log(numberDisplay);
+    expression.innerHTML = `${
+        numberAccount !== null ? numberAccount : numberDisplay
+    } ${trueOperator}`;
+    numberDisplay = "0";
+    operatorActive = true;
 }
 
 function addNumber(number) {
+    console.log("Before:", numberDisplay);
     display.classList.remove("error_div");
-    numberDisplay += number;
+    numberDisplay =
+        numberDisplay === "0" ? number.toString() : numberDisplay + number;
     display.innerHTML = numberDisplay;
     numberAccount = null;
     if (!operatorActive) {
@@ -128,7 +136,7 @@ function addNumber(number) {
 function result() {
     if (operatorActive) {
         const firstOperand = parseFloat(expression.innerHTML);
-        if (numberDisplay === "") {
+        if (numberDisplay === 0) {
             numberDisplay = display.innerHTML;
         }
         const secondOperand = parseFloat(numberDisplay);
@@ -160,8 +168,8 @@ function result() {
         }
 
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
-        numberAccount = error?0:display.innerHTML;
+        numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
-        numberDisplay = "";
+        numberDisplay = display.innerHTML;
     }
 }
