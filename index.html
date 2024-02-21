@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Web Calculator</title>
-  </head>
-  <body>
-    <div class="calculator">
-      <header class="calculatorHeader">
-        <div class="calculator_expression"><span id="expression">0</span></div>
-        <div class="calculator_operands"><span id="display">0</span></div>
-      </header>
-      <div class="operations">
-        <div class="calculator_container">
-          <div class="calculator_button" id="clear">C</div>
-          <div class="calculator_button">+/-</div>
-          <div class="calculator_button">%</div>
-          <div class="calculator_button">√</div>
-          <div class="calculator_button"id="seven">7</div>
-          <div class="calculator_button"id="eight">8</div>
-          <div class="calculator_button"id="nine">9</div>
-          <div class="calculator_button"id="div">/</div>
-          <div class="calculator_button"id="four">4</div>
-          <div class="calculator_button"id="five">5</div>
-          <div class="calculator_button"id="six">6</div>
-          <div class="calculator_button" id="mult">X</div>
-          <div class="calculator_button" id="one" >1</div>
-          <div class="calculator_button"id="two">2</div>
-          <div class="calculator_button"id="three">3</div>
-          <div class="calculator_button" id="less">_</div>
-          <div class="calculator_button" id="zero">0</div>
-          <div class="calculator_button parenteses">(</div>
-          <div class="calculator_button parenteses">)</div>
-          <div class="calculator_button">.</div>
-          <div class="calculator_button" id="plus">+</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Web Calculator</title>
+    </head>
+    <body>
+        <div class="calculator">
+            <header class="calculatorHeader">
+                <div class="calculator_expression">
+                    <span id="expression">0</span>
+                </div>
+                <div class="calculator_operands">
+                    <span id="display">0</span>
+                </div>
+            </header>
+            <div class="operations">
+                <div class="calculator_container">
+                    <div class="calculator_button" id="clear">C</div>
+                    <div class="calculator_button">+/-</div>
+                    <div class="calculator_button">%</div>
+                    <div class="calculator_button">√</div>
+                    <div class="calculator_button" id="seven">7</div>
+                    <div class="calculator_button" id="eight">8</div>
+                    <div class="calculator_button" id="nine">9</div>
+                    <div class="calculator_button" id="div">/</div>
+                    <div class="calculator_button" id="four">4</div>
+                    <div class="calculator_button" id="five">5</div>
+                    <div class="calculator_button" id="six">6</div>
+                    <div class="calculator_button" id="mult">X</div>
+                    <div class="calculator_button" id="one">1</div>
+                    <div class="calculator_button" id="two">2</div>
+                    <div class="calculator_button" id="three">3</div>
+                    <div class="calculator_button" id="less">_</div>
+                    <div class="calculator_button" id="zero">0</div>
+                    <div class="calculator_button parenteses">(</div>
+                    <div class="calculator_button parenteses">)</div>
+                    <div class="calculator_button">.</div>
+                    <div class="calculator_button" id="plus">+</div>
+                </div>
+            </div>
+            <div class="result" id="result">
+                <div class="calculator_equals"></div>
+                <div class="calculator_equals"></div>
+            </div>
         </div>
-      </div>
-      <div class="result" id="result">
-        <div class="calculator_equals"></div>
-        <div class="calculator_equals"></div>
-      </div>
-    </div>
-    <script src="index.js"></script>
-  </body>
+        <script src="index.js"></script>
+    </body>
 </html>
