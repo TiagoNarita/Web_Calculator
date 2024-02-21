@@ -55,6 +55,8 @@ div.onclick = function () {
 };
 //functions button
 
+
+
 function buttonClear() {
     numberDisplay = "0";
     display.innerHTML = 0;
@@ -63,22 +65,20 @@ function buttonClear() {
 }
 
 function minusfunc() {
-    if (numberDisplay.includes("-")) {
-        numberDisplay = numberDisplay.slice("1");
-        display.innerHTML = numberDisplay;
+    if (display.innerHTML.includes("-")) {
+        display.innerHTML = display.innerHTML.slice("1");
     } else {
-        numberDisplay = "-" + numberDisplay;
-        display.innerHTML = numberDisplay;
+        display.innerHTML = "-" + display.innerHTML;
+        numberDisplay = display.innerHTML
     }
 }
 
-//lembrar de arrumar o zero
 function buttonZero() {
     if (display.innerHTML !== "0") {
         numberDisplay += "0";
         display.innerHTML = numberDisplay;
     } else {
-        numberDisplay = 0;
+        display.innerHTML = "0";
     }
 }
 function buttonOne() {
@@ -170,6 +170,6 @@ function result() {
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
-        numberDisplay = display.innerHTML;
+        numberDisplay = "0";
     }
 }
