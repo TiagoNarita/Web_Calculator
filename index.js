@@ -10,6 +10,7 @@ function getElement(id) {
 const expression = getElement("expression");
 const display = getElement("display");
 const clear = getElement("clear");
+const minus = getElement("minus");
 const zero = getElement("zero");
 const one = getElement("one");
 const two = getElement("two");
@@ -39,6 +40,7 @@ seven.onclick = buttonSeven;
 eight.onclick = buttonEight;
 nine.onclick = buttonNine;
 equal.onclick = result;
+minus.onclick = minus()
 plus.onclick = function () {
     setOperator("+");
 };
@@ -58,6 +60,10 @@ function buttonClear() {
     display.innerHTML = "0";
     expression.innerHTML = "0";
     numberAccount = null;
+}
+
+function minus (){
+    
 }
 
 function buttonZero() {
