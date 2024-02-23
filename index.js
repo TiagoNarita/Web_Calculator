@@ -2,6 +2,7 @@ let numberDisplay = "0";
 let numberAccount = null;
 let trueOperator = "";
 let operatorActive = false;
+const error = "Error";
 
 function getElement(id) {
     return document.getElementById(id);
@@ -131,8 +132,13 @@ function minusfunc() {
 function rootfunc() {
     expression.innerHTML = `√(${display.innerHTML})`;
     display.innerHTML = Math.sqrt(display.innerHTML);
-    numberDisplay = display.innerHTML;
-    operatorActive = false;
+    if (display.innerHTML === "NaN"){
+        display.innerHTML = error;  
+    } else {
+        numberAccount = display.innerHTML;
+        numberDisplay = "0"
+        operatorActive = false;
+    }
 }
 
 function addNumber(number) {
