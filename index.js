@@ -134,12 +134,11 @@ function rootfunc() {
     display.innerHTML = Math.sqrt(display.innerHTML);
     if (display.innerHTML === "NaN"){
         display.innerHTML = error;  
-        numberDisplay = "0"
     } else {
         numberAccount = display.innerHTML;
-        numberDisplay = "0"
         operatorActive = false;
     }
+    numberDisplay = "0"
 }
 
 function addNumber(number) {
