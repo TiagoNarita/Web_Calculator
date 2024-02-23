@@ -129,7 +129,10 @@ function minusfunc() {
 }
 
 function rootfunc() {
-    
+    expression.innerHTML = `√(${display.innerHTML})`;
+    display.innerHTML = Math.sqrt(display.innerHTML);
+    numberDisplay = display.innerHTML;
+    operatorActive = false;
 }
 
 function addNumber(number) {
