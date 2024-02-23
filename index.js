@@ -62,16 +62,6 @@ function buttonClear() {
     numberAccount = null;
 }
 //arrumar quando ele vem na expressao
-function minusfunc() {
-    if (display.innerHTML !== "0") {
-        if (display.innerHTML.includes("-")) {
-            display.innerHTML = display.innerHTML.slice("1");
-        } else {
-            display.innerHTML = "-" + display.innerHTML;
-            numberDisplay = display.innerHTML;
-        }
-    }
-}
 
 function buttonZero() {
     if (numberDisplay !== "0") {
@@ -115,12 +105,32 @@ function buttonNine() {
 
 function setOperator(operator) {
     trueOperator = operator;
-    console.log(numberDisplay);
     expression.innerHTML = `${
         numberAccount !== null ? numberAccount : numberDisplay
     } ${trueOperator}`;
     numberDisplay = "0";
     operatorActive = true;
+}
+
+function minusfunc() {
+    if (display.innerHTML !== "0") {
+        operatorActive;
+        if (display.innerHTML.includes("-")) {
+            display.innerHTML = display.innerHTML.slice("1");
+            numberDisplay = display.innerHTML;
+            if (numberAccount !== null) {
+                numberAccount = numberDisplay;
+                console.log(numberAccount);
+            }
+        } else {
+            display.innerHTML = "-" + display.innerHTML;
+            numberDisplay = display.innerHTML;
+            if (numberAccount !== null) {
+                numberAccount = numberDisplay;
+                console.log(numberAccount);
+            }
+        }
+    }
 }
 
 function addNumber(number) {
