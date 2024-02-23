@@ -26,6 +26,7 @@ const less = getElement("less");
 const mult = getElement("mult");
 const div = getElement("div");
 const equal = getElement("result");
+const root = getElement("root");
 
 //inicialize buttons
 clear.onclick = buttonClear;
@@ -41,6 +42,8 @@ eight.onclick = buttonEight;
 nine.onclick = buttonNine;
 equal.onclick = result;
 minus.onclick = minusfunc;
+root.onclick = rootfunc;
+
 plus.onclick = function () {
     setOperator("+");
 };
@@ -114,16 +117,19 @@ function setOperator(operator) {
 
 function minusfunc() {
     if (display.innerHTML !== "0") {
-        if (display.innerHTML.includes("-")) {
-            display.innerHTML = display.innerHTML.slice("1");
-        } else {
-            display.innerHTML = "-" + display.innerHTML;
-        }
+        display.innerHTML = display.innerHTML.includes("-")
+            ? display.innerHTML.slice("1")
+            : "-" + display.innerHTML;
+
         numberDisplay = display.innerHTML;
         if (numberAccount !== null) {
             numberAccount = numberDisplay;
         }
     }
+}
+
+function rootfunc() {
+    
 }
 
 function addNumber(number) {
