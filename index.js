@@ -114,27 +114,19 @@ function setOperator(operator) {
 
 function minusfunc() {
     if (display.innerHTML !== "0") {
-        operatorActive;
         if (display.innerHTML.includes("-")) {
             display.innerHTML = display.innerHTML.slice("1");
-            numberDisplay = display.innerHTML;
-            if (numberAccount !== null) {
-                numberAccount = numberDisplay;
-                console.log(numberAccount);
-            }
         } else {
             display.innerHTML = "-" + display.innerHTML;
-            numberDisplay = display.innerHTML;
-            if (numberAccount !== null) {
-                numberAccount = numberDisplay;
-                console.log(numberAccount);
-            }
+        }
+        numberDisplay = display.innerHTML;
+        if (numberAccount !== null) {
+            numberAccount = numberDisplay;
         }
     }
 }
 
 function addNumber(number) {
-    console.log("Before:", numberDisplay);
     display.classList.remove("error_div");
     numberDisplay =
         numberDisplay === "0" ? number.toString() : numberDisplay + number;
