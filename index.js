@@ -182,20 +182,20 @@ function result() {
                 sumResult = firstOperand + secondOperand;
                 break;
             case "-":
-                display.innerHTML = firstOperand - secondOperand;
+                sumResult = firstOperand - secondOperand;
                 break;
             case "x":
-                display.innerHTML = firstOperand * secondOperand;
+                sumResult = firstOperand * secondOperand;
                 break;
             case "/":
                 if (secondOperand !== 0) {
-                    display.innerHTML = firstOperand / secondOperand;
+                    sumResult = firstOperand / secondOperand;
                 } else if (secondOperand === 0 && firstOperand === 0) {
-                    display.innerHTML = "Result is undefined";
+                    sumResult = "Result is undefined";
                     display.classList.add("error_div");
                     error = true;
                 } else if (secondOperand === 0) {
-                    display.innerHTML = "Cannot divide by zero";
+                    sumResult = "Cannot divide by zero";
                     display.classList.add("error_div");
                     error = true;
                 }
