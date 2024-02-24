@@ -174,7 +174,6 @@ function result() {
         }
 
         const secondOperand = parseFloat(numberDisplay);
-        console.log(secondOperand);
 
         let error = false;
 
@@ -202,6 +201,11 @@ function result() {
                 }
                 break;
         }
+        const decimalPlaces = (sumResult.toString().split(".")[1] || []).length;
+
+        // Arredonda o resultado para o número de casas decimais
+        display.innerHTML = sumResult.toFixed(decimalPlaces);
+
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
         if (display.innerHTML.length > 7) {
             display.classList.add("displayLarge");
