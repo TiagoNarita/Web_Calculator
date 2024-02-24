@@ -3,6 +3,7 @@ let numberAccount = null;
 let trueOperator = "";
 let operatorActive = false;
 const error = "Error";
+const maxDigits = 11;
 
 function getElement(id) {
     return document.getElementById(id);
@@ -28,6 +29,7 @@ const mult = getElement("mult");
 const div = getElement("div");
 const equal = getElement("result");
 const root = getElement("root");
+const point = getElement("point");
 
 //inicialize buttons
 clear.onclick = buttonClear;
@@ -44,6 +46,7 @@ nine.onclick = buttonNine;
 equal.onclick = result;
 minus.onclick = minusfunc;
 root.onclick = rootfunc;
+point.onclick = pointfunc;
 
 plus.onclick = function () {
     setOperator("+");
@@ -65,12 +68,10 @@ function buttonClear() {
     expression.innerHTML = 0;
     numberAccount = null;
 }
-//arrumar quando ele vem na expressao
 
 function buttonZero() {
     if (numberDisplay !== "0") {
-        numberDisplay += "0";
-        display.innerHTML = numberDisplay;
+        addNumber(0);
     } else {
         display.innerHTML = "0";
         if (!operatorActive) {
@@ -107,6 +108,13 @@ function buttonNine() {
     addNumber(9);
 }
 
+function pointfunc() {
+    if (display.innerHTML.includes(".")) {
+        return;
+    }
+    addNumber(".");
+}
+
 function setOperator(operator) {
     trueOperator = operator;
     expression.innerHTML = `${
@@ -115,7 +123,7 @@ function setOperator(operator) {
     numberDisplay = "0";
     operatorActive = true;
 }
-
+//mult
 function minusfunc() {
     if (display.innerHTML !== "0") {
         display.innerHTML = display.innerHTML.includes("-")
@@ -132,38 +140,47 @@ function minusfunc() {
 function rootfunc() {
     expression.innerHTML = `√(${display.innerHTML})`;
     display.innerHTML = Math.sqrt(display.innerHTML);
-    if (display.innerHTML === "NaN"){
-        display.innerHTML = error;  
+    if (display.innerHTML === "NaN") {
+        display.innerHTML = error;
     } else {
         numberAccount = display.innerHTML;
         operatorActive = false;
     }
-    numberDisplay = "0"
+    numberDisplay = "0";
 }
 
 function addNumber(number) {
-    display.classList.remove("error_div");
-    numberDisplay =
-        numberDisplay === "0" ? number.toString() : numberDisplay + number;
-    display.innerHTML = numberDisplay;
+    display.classList.remove("error_div", "displayLarge");
+    if (numberDisplay.length > 7) {
+        display.classList.add("displayLarge");
+    }
+    if (numberDisplay.length < maxDigits) {
+        numberDisplay =
+            numberDisplay === "0" ? number.toString() : numberDisplay + number;
+        display.innerHTML = numberDisplay;
+    }
     numberAccount = null;
     if (!operatorActive) {
         expression.innerHTML = 0;
     }
 }
 
+let sumResult;
 function result() {
     if (operatorActive) {
         const firstOperand = parseFloat(expression.innerHTML);
         if (numberDisplay === "0") {
             numberDisplay = display.innerHTML;
         }
+
         const secondOperand = parseFloat(numberDisplay);
+        console.log(secondOperand);
+
         let error = false;
 
         switch (trueOperator) {
             case "+":
-                display.innerHTML = firstOperand + secondOperand;
+                sumResult = firstOperand + secondOperand;
                 break;
             case "-":
                 display.innerHTML = firstOperand - secondOperand;
@@ -185,8 +202,11 @@ function result() {
                 }
                 break;
         }
-
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
+        if (display.innerHTML.length > 7) {
+            display.classList.add("displayLarge");
+        }
+
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
         numberDisplay = "0";
