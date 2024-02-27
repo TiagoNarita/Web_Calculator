@@ -112,7 +112,7 @@ function pointfunc() {
     if (display.innerHTML.includes(".")) {
         return;
     }
-    addNumber(".");
+    display.innerHTML === "0" ? addNumber("0.") : addNumber(".");
 }
 
 function setOperator(operator) {
@@ -139,10 +139,12 @@ function minusfunc() {
 
 function rootfunc() {
     expression.innerHTML = `√(${display.innerHTML})`;
-    display.innerHTML = Math.sqrt(display.innerHTML);
-    if (display.innerHTML === "NaN") {
+    let squareResult = Math.sqrt(display.innerHTML);
+    if (isNaN(squareResult)) {
         display.innerHTML = error;
+        console.log("entrei");
     } else {
+        arround(squareResult);
         numberAccount = display.innerHTML;
         operatorActive = false;
     }
@@ -182,29 +184,26 @@ function result() {
                 sumResult = firstOperand + secondOperand;
                 break;
             case "-":
-                display.innerHTML = firstOperand - secondOperand;
+                sumResult = firstOperand - secondOperand;
                 break;
             case "x":
-                display.innerHTML = firstOperand * secondOperand;
+                sumResult = firstOperand * secondOperand;
                 break;
             case "/":
                 if (secondOperand !== 0) {
-                    display.innerHTML = firstOperand / secondOperand;
+                    sumResult = firstOperand / secondOperand;
                 } else if (secondOperand === 0 && firstOperand === 0) {
-                    display.innerHTML = "Result is undefined";
+                    sumResult = "Result is undefined";
                     display.classList.add("error_div");
                     error = true;
                 } else if (secondOperand === 0) {
-                    display.innerHTML = "Cannot divide by zero";
+                    sumResult = "Cannot divide by zero";
                     display.classList.add("error_div");
                     error = true;
                 }
                 break;
         }
-        const decimalPlaces = (sumResult.toString().split(".")[1] || []).length;
-
-        // Arredonda o resultado para o número de casas decimais
-        display.innerHTML = sumResult.toFixed(decimalPlaces);
+        arround(sumResult);
 
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
         if (display.innerHTML.length > 7) {
@@ -214,5 +213,14 @@ function result() {
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
         numberDisplay = "0";
+    }
+}
+
+function arround(number) {
+    const decimalPlaces = (number.toString().split(".")[1] || []).length;
+    if (decimalPlaces > 7) {
+        display.innerHTML = number.toFixed(7);
+    } else {
+        display.innerHTML = number.toFixed(decimalPlaces);
     }
 }
