@@ -209,6 +209,7 @@ function result() {
         if (display.innerHTML.length > 7) {
             display.classList.add("displayLarge");
         }
+        //need think a way to arround a number without .   
 
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
