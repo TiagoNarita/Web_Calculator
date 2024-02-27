@@ -117,9 +117,13 @@ function pointfunc() {
 
 function setOperator(operator) {
     trueOperator = operator;
+    if (expression.innerHTML.split(" ")[0] === display.innerHTML) {
+        numberDisplay = expression.innerHTML.split(" ")[0];
+    }
     expression.innerHTML = `${
         numberAccount !== null ? numberAccount : numberDisplay
     } ${trueOperator}`;
+
     numberDisplay = "0";
     operatorActive = true;
 }
@@ -209,7 +213,7 @@ function result() {
         if (display.innerHTML.length > 7) {
             display.classList.add("displayLarge");
         }
-        //need think a way to arround a number without .   
+        //need think a way to arround a number without .
 
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
