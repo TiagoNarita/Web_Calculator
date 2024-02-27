@@ -112,14 +112,18 @@ function pointfunc() {
     if (display.innerHTML.includes(".")) {
         return;
     }
-    addNumber(".");
+    display.innerHTML === "0" ? addNumber("0.") : addNumber(".");
 }
 
 function setOperator(operator) {
     trueOperator = operator;
+    if (expression.innerHTML.split(" ")[0] === display.innerHTML) {
+        numberDisplay = expression.innerHTML.split(" ")[0];
+    }
     expression.innerHTML = `${
         numberAccount !== null ? numberAccount : numberDisplay
     } ${trueOperator}`;
+
     numberDisplay = "0";
     operatorActive = true;
 }
@@ -139,10 +143,12 @@ function minusfunc() {
 
 function rootfunc() {
     expression.innerHTML = `√(${display.innerHTML})`;
-    display.innerHTML = Math.sqrt(display.innerHTML);
-    if (display.innerHTML === "NaN") {
+    let squareResult = Math.sqrt(display.innerHTML);
+    if (isNaN(squareResult)) {
         display.innerHTML = error;
+        console.log("entrei");
     } else {
+        arround(squareResult);
         numberAccount = display.innerHTML;
         operatorActive = false;
     }
@@ -201,18 +207,25 @@ function result() {
                 }
                 break;
         }
-        const decimalPlaces = (sumResult.toString().split(".")[1] || []).length;
-
-        // Arredonda o resultado para o número de casas decimais
-        display.innerHTML = sumResult.toFixed(decimalPlaces);
+        arround(sumResult);
 
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
         if (display.innerHTML.length > 7) {
             display.classList.add("displayLarge");
         }
+        //need think a way to arround a number without .
 
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
         numberDisplay = "0";
+    }
+}
+
+function arround(number) {
+    const decimalPlaces = (number.toString().split(".")[1] || []).length;
+    if (decimalPlaces > 7) {
+        display.innerHTML = number.toFixed(7);
+    } else {
+        display.innerHTML = number.toFixed(decimalPlaces);
     }
 }
