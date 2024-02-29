@@ -148,7 +148,7 @@ function rootfunc() {
         display.innerHTML = error;
         console.log("entrei");
     } else {
-        arround(squareResult);
+        around(squareResult);
         numberAccount = display.innerHTML;
         operatorActive = false;
     }
@@ -207,13 +207,12 @@ function result() {
                 }
                 break;
         }
-        arround(sumResult);
-
+        around(sumResult);
         expression.innerHTML = `${firstOperand} ${trueOperator} ${secondOperand} =`;
         if (display.innerHTML.length > 7) {
             display.classList.add("displayLarge");
         }
-        //need think a way to arround a number without .
+        //need think a way to around a number without .
 
         numberAccount = error ? 0 : display.innerHTML;
         operatorActive = false;
@@ -221,11 +220,23 @@ function result() {
     }
 }
 
-function arround(number) {
+function around(number) {
+    if (number.toString().length > 11) {
+        number = parseFloat(number).toPrecision(5);
+        display.innerHTML = number;
+    }
     const decimalPlaces = (number.toString().split(".")[1] || []).length;
+    console.log
     if (decimalPlaces > 7) {
-        display.innerHTML = number.toFixed(7);
+        display.innerHTML = number.toExponential(4);
     } else {
-        display.innerHTML = number.toFixed(decimalPlaces);
+        display.innerHTML = number;
+    }
+}
+
+function reduceLast(number) {
+    if (number.toString().length > 11) {
+        number = parseFloat(number).toPrecision(5);
+        display.innerHTML = number;
     }
 }
