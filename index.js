@@ -30,6 +30,8 @@ const div = getElement("div");
 const equal = getElement("result");
 const root = getElement("root");
 const point = getElement("point");
+const closeParentheses = getElement("closeParentheses");
+const openParentheses = getElement("openParentheses");
 
 //inicialize buttons
 clear.onclick = buttonClear;
@@ -47,6 +49,8 @@ equal.onclick = result;
 minus.onclick = minusfunc;
 root.onclick = rootfunc;
 point.onclick = pointfunc;
+closeParentheses.onclick = closeParenthesesFunc;
+openParentheses.onclick = openParenthesesfunc;
 
 plus.onclick = function () {
     setOperator("+");
@@ -61,6 +65,12 @@ div.onclick = function () {
     setOperator("/");
 };
 //functions button
+function closeParenthesesFunc() {
+    addNumber(")");
+}
+function openParenthesesfunc() {
+    addNumber("(");
+}
 
 function buttonClear() {
     numberDisplay = "0";
@@ -146,7 +156,6 @@ function rootfunc() {
     let squareResult = Math.sqrt(display.innerHTML);
     if (isNaN(squareResult)) {
         display.innerHTML = error;
-        console.log("entrei");
     } else {
         around(squareResult);
         numberAccount = display.innerHTML;
@@ -221,22 +230,10 @@ function result() {
 }
 
 function around(number) {
-    if (number.toString().length > 11) {
-        number = parseFloat(number).toPrecision(5);
-        display.innerHTML = number;
-    }
     const decimalPlaces = (number.toString().split(".")[1] || []).length;
-    console.log
-    if (decimalPlaces > 7) {
+    if (decimalPlaces > 7 || number.toString().length > 11) {
         display.innerHTML = number.toExponential(4);
     } else {
-        display.innerHTML = number;
-    }
-}
-
-function reduceLast(number) {
-    if (number.toString().length > 11) {
-        number = parseFloat(number).toPrecision(5);
         display.innerHTML = number;
     }
 }
